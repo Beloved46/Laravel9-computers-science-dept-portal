@@ -10,9 +10,12 @@ class Result extends Model
     use HasFactory;
     protected $fillable = [
         'course_code',
-        'matric',
+        'matric_no',
         'score',
         'grade'
     ];
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

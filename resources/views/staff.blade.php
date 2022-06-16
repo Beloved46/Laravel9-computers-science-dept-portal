@@ -35,7 +35,7 @@
                                 <h5><a href="result/import"><i class="fa fa-fw fa-table"></i> Upload Result</a></h5>
                                 <hr>
 
-                                <h5><a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a></h5>
+                                <h5><a href="#"><i class="fa fa-fw fa-edit"></i> Forms</a></h5>
                                 <hr>
 
                                 <h5><a href="home">

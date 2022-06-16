@@ -29,7 +29,7 @@
                                 <hr>
                                 <h5><a href="/student/profile"><i class="fa fa-fw fa-user"></i> Profile</a></h5>
                                 <hr>
-                                <h5><a href=""><i class="fa fa-fw fa-table"></i> View Result</a></h5>
+                                <h5><a href="/student/results"><i class="fa fa-fw fa-table"></i> View Result</a></h5>
                                 <hr>
                                 <h5><a href="#"><i class="fa fa-fw fa-edit"></i> Courses</a></h5>
                                 <hr>
@@ -63,14 +63,48 @@
                                     </div>
                                 </div>
                             </section>
+                            <x-auth-card>
+                                <div id="page-wrapper">
+                                    <section>
+                                        <h2>Profile</h2>
+                                        <form method="post" action="#">
+                                            <div class="">
+                                                <div class="col-6 col-12-xsmall">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" name="name" id="name" value="{{ Auth::user()->name }}"  />
+                                                </div>
+                                                <div class="col-6 col-12-xsmall">
+                                                    <label for="surname">surname</label>
+                                                    <input type="text" name="surname" id="surname" value="{{ Auth::user()->surname  }}"  />
+                                                </div>
+                                                <div class="col-6 col-12-xsmall formin">
+                                                    <label for="surname">Email</label>
+                                                    <input type="email" name="email" id="email" value="{{ Auth::user()->email }}"  />
+                                                
+                                                </div>
+                                                
+                                                <div class="col-6 col-12-xsmall formin">
+                                                    <label for="matric">Matric Number</label>
+                                                    <input type="text" name="matric" id="matric" value="{{ Auth::user()->matric }}" />
+                                                </div>
+                                                
+                                                <div class="col-12">
+                                                    <ul class="actions">
+                                                        <li><input type="submit" value="Update" class="primary" /></li>
+                                                        <li><input type="reset" value="Back" /></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </section>
+                                </div>
+                            </x-auth-card>
 
                         </div>
                     </div>
                 </div>
             </div>
 
-
         </div>
-
-
 </x-guest-layout>
+

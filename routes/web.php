@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administrator;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ResultImportController;
+use App\Http\Controllers\StudentDash;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-
-Route::get('/student', function () {
-    return view('student');
-});
-
+// Administrator Dashboard 
 
 Route::prefix('/')->middleware('role:administrator')->group(function() {
     Route::get('/admin', [Administrator::class, 'dashboard'])->name('head');
@@ -35,14 +31,20 @@ Route::prefix('/')->middleware('role:administrator')->group(function() {
 });
 
 
+// upload results route by staff
 
-// Route::get('/profile', function () {
-//     return view('studentProfile');
-// });
+Route::group(['middleware'=> ['role:staff']], function() {
+    Route::get('result/import', [ResultImportController::class, 'show']);
+    Route::post('results/import', [ResultImportController::class, 'import_file']);
+});
 
+// student Dashboard
+Route::group(['middleware'=>['role:student']], function() {
+    Route::get('/student/profile', [StudentDash::class, 'show']);
+    Route::get('/student/results', [StudentDash::class, 'ShowResult']);
+});
 
 //auth route for both
-
 
 Route::group(['middleware'=> ['auth']], function() {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name
@@ -52,9 +54,3 @@ Route::group(['middleware'=> ['auth']], function() {
 require __DIR__.'/auth.php';
 
 
-// upload results route
-
-Route::group(['middleware'=> ['role:staff']], function() {
-    Route::get('result/import', [ResultImportController::class, 'show']);
-    Route::post('results/import', [ResultImportController::class, 'import_file']);
-});

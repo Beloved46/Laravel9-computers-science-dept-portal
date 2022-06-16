@@ -24,7 +24,7 @@ class ResultImport implements ToCollection, WithCustomCsvSettings, SkipsOnError
         foreach ($rows as $row) {
             $result = Result::create([
                 'course_code' => $row[0],
-                'matric' =>$row[1],
+                'matric_no' =>$row[1],
                 'score' => $row[2],
                 'grade' =>$row[3]
             ]);
