@@ -49,8 +49,9 @@
                 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="student">Student</option>
                     <option value="staff">Staff</option>
+                    <option value="administrator">Admin</option>
                 </select>
-            </div>
+            </div> 
 
             <!-- Matric No. -->
             <div class="col-6 col-12-xsmall formin">

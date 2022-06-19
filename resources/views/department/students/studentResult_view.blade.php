@@ -73,14 +73,12 @@
                                         <th>Grade</th>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($students as $student)
+                                    @foreach ($student_result as $result)
                                         <tr>
-                                            <td>{{ $student->matric }}</td>
-                                            <td>{{ $student->name }}</td>
-                                            <td>{{ $student->surname }}</td>
-                                            <td>{{ $student->email }}</td>
-                                            
-                                    @endforeach --}}
+                                            <td>{{ $result->course_code }}</td>
+                                            <td>{{ $result->score}}</td>
+                                            <td>{{ $result->grade }}</td>
+                                    @endforeach
 
 
                                 </tbody>

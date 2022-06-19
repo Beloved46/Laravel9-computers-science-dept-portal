@@ -16,9 +16,6 @@ class ResultImportController extends Controller
 
        $file = $request->file('result_file')->store('imports');
        (new ResultImport)->import($file);
-        //    (new ResultImport)->import($file);
-        // $path=storage_path('app').'/'.$file;
-        // Excel::import(new ResultImport, $file);
     
        return back()->withStatus('file uploaded successfully');
     }

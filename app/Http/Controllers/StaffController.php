@@ -54,7 +54,7 @@ class StaffController extends Controller
         ]);
         $staff->attachRole('staff');
         if($staff->save()) {
-            $request->session()->flash('status', 'student added successfully');
+            $request->session()->flash('status', 'staff added successfully');
             return redirect()->route('allstaff.index');
         } else {
             $request->session()->flash('danger', 'sorry an error occured while creating user');

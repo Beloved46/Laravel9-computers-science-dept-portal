@@ -23,9 +23,6 @@
                     <div class="row ">
                         <div class="col-3 col-12-medium">
 
-                            <!-- Sidebar -->
-                            <!-- <nav id="nav" > -->
-                            <!-- <ul class="sidelist"> -->
                             <div class="sidelink">
 
                                 <h3>Administrator</h3> <hr>

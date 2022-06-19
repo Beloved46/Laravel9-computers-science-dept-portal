@@ -66,8 +66,7 @@
 					</ul>
 					<ul class="copyright">
                         <li><a href="https://www.flaticon.com/free-stickers/work" title="work stickers">Work stickers created by inipagistudio - Flaticon</a></li>
-						<li>&copy; Copyright, Beloved 2022.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+						<li>&copy; Copyright, Beloved 2022.</li>
 				</footer>
     
     </body>
