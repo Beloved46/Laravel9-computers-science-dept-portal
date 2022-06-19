@@ -45,8 +45,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function results()
+    public function studentResults()
     {
-        return $this->hasMany(Result::class);
+        return $this->hasMany(Result::class, 'matric_no', 'matric');
     }
 }

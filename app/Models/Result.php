@@ -14,7 +14,12 @@ class Result extends Model
         'score',
         'grade'
     ];
-    public function user()
+    
+    protected $table = 'results';
+    protected $primaryKey = 'matric_no';
+
+    //result belongs to a student
+    public function csStudent()
     {
         return $this->belongsTo(User::class);
     }
