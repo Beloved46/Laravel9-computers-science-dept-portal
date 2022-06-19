@@ -61,36 +61,3 @@
 
     </body>
 </x-guest-layout>
-
-{{-- <x-guest-layout>
-    <x-auth-card>
-
-    <div id="page-wrapper">
-    <section class="is-preload min-h-screen flex flex-col sm:justify-center items-center">
-        <!-- Session Status -->
-        <x-auth-session-status class="col-6 col-12-xsmall" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="col-6 col-12-xsmall" :errors="$errors" />
-
-        <form method="POST" action="result/import" enctype="multipart/form-data">
-            @csrf
-
-            <div >
-            
-                <div class="col-6 col-12-xsmall formin">
-                    <x-input id="file"  type="file" name="file" required autofocus />
-                </div>
-                
-                    <div class="col-12">
-                    <x-button class="ml-3">
-                        {{ __('Upload') }}
-                    </x-button>
-                    </div>
-            </div>
-        </form>
-    </section>
-    </div>
-</x-auth-card>
-
-</x-guest-layout>  --}}
