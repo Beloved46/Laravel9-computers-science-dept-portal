@@ -16,7 +16,7 @@
         
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
         <noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
 
         
@@ -62,7 +62,8 @@
 						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
 						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+						<li><a href="mailto:belovedakande@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                                                
 					</ul>
 					<ul class="copyright">
                         <li><a href="https://www.flaticon.com/free-stickers/work" title="work stickers">Work stickers created by inipagistudio - Flaticon</a></li>
@@ -76,6 +77,6 @@
 		{{-- <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script> --}}
 		<script src="{{ asset('assets/js/browser.min.js') }}"></script>
 		<script src="{{ asset('assets/js/breakpoints.min.js') }}"></script>
-		{{-- <script src="{{ asset('assets/js/util.js') }}"></script> --}}
+		<script src="{{ asset('assets/js/util.js') }}"></script>
 		<script src="{{ asset('assets/js/main.js') }}"></script>
 </html>

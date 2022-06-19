@@ -77,7 +77,6 @@
                                             <th>surname</th>
                                             <th>email</th>
                                             <th>Edit</th>
-                                            <th>Delete</th>
                                             <th><a href="{{ route('allstudents.create') }}" class="button primary small">Add Student</a></th>
                                         </tr>
                                     </thead>
@@ -90,7 +89,6 @@
                                                 <td>{{ $student->email }}</td>
                                                 <td><a href="allstudents/{{ $student->id }}/edit">Edit</a></td>
 
-                                                <td><a href="{{ route('allstudents.destroy', $student->id) }}">Delete</a></td>
                                             </tr>
                                         @endforeach
 

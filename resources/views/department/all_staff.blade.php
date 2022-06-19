@@ -73,7 +73,6 @@
                                                 <th>surname</th>
                                                 <th>email</th>
                                                 <th>Edit</th>
-                                                <th>Delete</th>
                                                 <th><a href="{{ route('allstaff.create') }}"
                                                         class="button primary small">Add Staff</a></th>
                                             </tr>
@@ -86,7 +85,6 @@
                                                     <td>{{ $staff->surname }}</td>
                                                     <td>{{ $staff->email }}</td>
                                                     <td><a href="allstaff/{{ $staff->id }}/edit">Edit</a></td>
-                                                    <td>delete</td>
                                                 </tr>
                                             @endforeach
 

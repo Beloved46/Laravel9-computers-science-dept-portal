@@ -116,7 +116,8 @@ class StudentController extends Controller
      */
     public function destroy(User $student)
     {
-        $student->delete();
-        return redirect()->route('allstudents.index');
+        
+        // $student->delete();
+        // return redirect()->route('allstudents.index');
     }
 }
