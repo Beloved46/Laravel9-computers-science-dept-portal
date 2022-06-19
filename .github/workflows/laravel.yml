@@ -72,7 +72,7 @@ jobs:
 
       - name: Deployment
 
-        uses: beloved/ssh-action@main
+        uses: git@github.com:Beloved46/Laravel9-computers-science-dept-portal.git
 
         with:
 
