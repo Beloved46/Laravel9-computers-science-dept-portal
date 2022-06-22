@@ -29,7 +29,7 @@
                                 <hr>
                                 <h5><a href="/student/profile"><i class="fa fa-fw fa-user"></i> Profile</a></h5>
                                 <hr>
-                                <h5><a href=""><i class="fa fa-fw fa-table"></i> View Result</a></h5>
+                                <h5><a href="/student/results"><i class="fa fa-fw fa-table"></i> View Result</a></h5>
                                 <hr>
                                 <h5><a href="#"><i class="fa fa-fw fa-edit"></i> Courses</a></h5>
                                 <hr>
