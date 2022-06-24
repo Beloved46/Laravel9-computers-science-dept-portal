@@ -47,18 +47,21 @@
                 <select name="role_id" class="block mt-1 w-full border-gray-300
                 focus:border-indigo-300 focus:ring-indigo-200
                 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="student">Student</option>
-                    <option value="staff">Staff</option>
-                    <option value="administrator">Admin</option>
+                <option value="" disabled selected>Select category</option>
+                <option value="student">Student</option>
+                <option value="staff">Staff</option>
+                <option value="administrator">Admin</option>
+                    
                 </select>
             </div> 
-
-            <!-- Matric No. -->
-            <div class="col-6 col-12-xsmall formin">
+             <!-- Matric No. -->
+             <div class="col-6 col-12-xsmall formin">
                 <x-input id="matric" class="block mt-1 w-full" 
                 type="text" name="matric" :value="old('matric')" 
-                placeholder="Matric No." />
+                placeholder="Student Matric No." />
             </div>
+
+
 
             <div class="flex items-center justify-end col-6 col-12-xsmall ">
                 <a class="underline text-sm text-white-600 hover:text-white-900" href="{{ route('login') }}">

@@ -17,7 +17,7 @@ class Results extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->string('course_code');
-            $table->smallInteger('matric_no')->nullable()->unsigned();
+            $table->integer('matric_no')->nullable()->unsigned();
             $table->string('score');
             $table->string('grade');
             $table->timestamp('updated_at')->nullable();

@@ -4121,7 +4121,7 @@ input, select, textarea {
 	}
 	
 .sidelink {
-	margin-left: 20px;
+	margin-left: 60px;
 	color: #D6D5A8;
 	font-family: 'Roboto';
   	font-style: italic;
@@ -4132,7 +4132,7 @@ input, select, textarea {
 	
 }
 .sidelink hr{
-	max-width: 100px;
+	max-width: 150px;
 }
 
 .logOu {
@@ -4142,11 +4142,13 @@ input, select, textarea {
     font-size: 16px;
 }
 .page-header {
-	background-color: #7C3E66;
+	/* background-color: #7C3E66; */
+	background-image: url('images/shutterstock_1882668217.jpg');
     color: #D6D5A8;
     font-family: Arial, Helvetica, sans-serif;
 	font-size: 40px;
 	min-width: 400px;
+	height: 200px;
 	margin-left: auto;
 	padding: 10px 10px;
 	
