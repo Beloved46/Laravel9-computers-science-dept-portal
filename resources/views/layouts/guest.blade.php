@@ -61,7 +61,7 @@
 						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="github.com/beloved46" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 						<li><a href="mailto:belovedakande@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
                                                 
 					</ul>

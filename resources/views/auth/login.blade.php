@@ -30,12 +30,12 @@
                                     required autocomplete="current-password"
                                     placeholder="Password" />
                 </div>
-{{-- 
+
                 <!-- Remember Me -->
-                <div class="col-6 col-12-medium">
+                {{-- <div class="col-6 col-12-medium">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        <x-input id="remember_me" type="checkbox" name="remember"/>
+                        <span class="ml-2 text-sm text-white-600">{{ __('Remember me') }}</span>
                     </label>
                 </div> --}}
             

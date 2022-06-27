@@ -27,16 +27,33 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="col-6 col-12-xsmall" :errors="$errors" />
 
-                    @if (isset($errors) && $errors->any())
-                        <div class="alert danger">
-                            @foreach ($errors->all() as $error )
-                            {{ $error }}
-                                
-                            @endforeach
-                        </div>
-                        
+                    @if (session()->has('failures'))
+                        <div class="table-wrapper">
+                            <table class="alt">
+                                <tr>
+                                    <th>Row</th>
+                                    <th>Attributes</th>
+                                    <th>Errors</th>
+                                    <th>Values</th>
+                                </tr>
+                                @foreach (session()->get('failures') as $error)
+                                <tr>
+                                    <td>{{ $error->row() }}</td>
+                                    <td>{{ $error->attribute() }}</td>
+                                    <td>
+                                       <ul>
+                                        @foreach ($error->errors() as $e)
+                                            <li>{{ $e }}</li>
+                                        @endforeach
+                                       </ul>
+                                    </td>
+                                    <td>{{ $error->values()[$error->attribute()] }}</td>
+                                </tr>
+                                    
+                                @endforeach
+                            </table></div>                        
                     @endif
-            
+
                     <form method="post" action="/results/import" accept=".xlsx,.xls,.csv" enctype="multipart/form-data">
                         @csrf
                         

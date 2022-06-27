@@ -3,6 +3,7 @@
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administrator;
+use App\Http\Controllers\ResultExportController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ResultImportController;
 use App\Http\Controllers\StudentDash;
@@ -42,6 +43,7 @@ Route::group(['middleware'=> ['role:staff']], function() {
 Route::group(['middleware'=>['role:student']], function() {
     Route::get('/student/profile', [StudentDash::class, 'show']);
     Route::get('/student/results', [StudentDash::class, 'ShowResult']);
+    Route::get('/student/result/download', [ResultExportController::class, 'export_file']);
 });
 
 //auth route for both

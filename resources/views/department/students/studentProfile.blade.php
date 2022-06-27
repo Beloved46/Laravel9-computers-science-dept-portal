@@ -25,7 +25,7 @@
 
                             <div class="sidelink">
 
-                                <h3> Student Dashboard</h3>
+                                <h3> <a href="/dashboard">Student Dashboard</a></h3>
                                 <hr>
                                 <h5><a href="/student/profile"><i class="fa fa-fw fa-user"></i> Profile</a></h5>
                                 <hr>
@@ -69,30 +69,27 @@
                                         <h2>Profile</h2>
                                         <form method="post" action="#">
                                             <div class="">
-                                                <div class="col-6 col-12-xsmall">
+                                                <div class="col-12 col-12-xsmall">
                                                     <label for="name">Name</label>
                                                     <input type="text" name="name" id="name" value="{{ Auth::user()->name }}"  />
                                                 </div>
-                                                <div class="col-6 col-12-xsmall">
+                                                <div class="col-12 col-12-xsmall">
                                                     <label for="surname">surname</label>
                                                     <input type="text" name="surname" id="surname" value="{{ Auth::user()->surname  }}"  />
                                                 </div>
-                                                <div class="col-6 col-12-xsmall formin">
+                                                <div class="col-12 col-12-xsmall formin">
                                                     <label for="surname">Email</label>
                                                     <input type="email" name="email" id="email" value="{{ Auth::user()->email }}"  />
                                                 
                                                 </div>
                                                 
-                                                <div class="col-6 col-12-xsmall formin">
+                                                <div class="col-12 col-12-xsmall formin">
                                                     <label for="matric">Matric Number</label>
                                                     <input type="text" name="matric" id="matric" value="{{ Auth::user()->matric }}" />
                                                 </div>
                                                 
                                                 <div class="col-12">
-                                                    <ul class="actions">
-                                                        <li><input type="submit" value="Update" class="primary" /></li>
-                                                        <li><input type="reset" value="Back" /></li>
-                                                    </ul>
+                                                    <a href="/dashboard" class="button primary">Back</a>
                                                 </div>
                                             </div>
                                         </form>

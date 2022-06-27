@@ -5,17 +5,26 @@ namespace App\Imports;
 use App\Models\Result;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
-class ResultImport implements ToCollection, WithCustomCsvSettings, SkipsOnError
+class ResultImport implements
+ ToCollection,
+ WithCustomCsvSettings,
+  SkipsOnError, 
+  WithValidation,
+   SkipsOnFailure
 {
-    use Importable;
+    use Importable, SkipsFailures;
     /**
-    * @param array $row
+    *@param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
@@ -36,8 +45,15 @@ class ResultImport implements ToCollection, WithCustomCsvSettings, SkipsOnError
             'input_encoding' => 'ISO-8859-1'
         ];
     }
+    public function rules(): array
+    {
+        return [
+            '*.matric_no' => ['nullable', 'integer', 'starts_with:22']
+        ];
+    }
     public function onError(Throwable $e)
     {
         
     }
+   
 }

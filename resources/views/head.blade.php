@@ -24,7 +24,7 @@
 
                         <div class="sidelink">
 
-                            <h3>Administrator</h3>
+                            <h3><a href="/dashborad">Administrator</a></h3>
                             <hr>
 
                             <h5><a href="{{ route('allstudents.index') }}"><i class="fa fa-fw fa-user"></i>

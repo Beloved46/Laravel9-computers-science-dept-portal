@@ -185,69 +185,69 @@
 
 				})
 
-				$this.on('touchmove', function(event) {
+				// $this.on('touchmove', function(event) {
 
-					if ($this.touchPosX === null
-					||	$this.touchPosY === null)
-						return;
+				// 	if ($this.touchPosX === null
+				// 	||	$this.touchPosY === null)
+				// 		return;
 
-					var	diffX = $this.touchPosX - event.originalEvent.touches[0].pageX,
-						diffY = $this.touchPosY - event.originalEvent.touches[0].pageY,
-						th = $this.outerHeight(),
-						ts = ($this.get(0).scrollHeight - $this.scrollTop());
+				// 	var	diffX = $this.touchPosX - event.originalEvent.touches[0].pageX,
+				// 		diffY = $this.touchPosY - event.originalEvent.touches[0].pageY,
+				// 		th = $this.outerHeight(),
+				// 		ts = ($this.get(0).scrollHeight - $this.scrollTop());
 
-					// Hide on swipe?
-						if (config.hideOnSwipe) {
+				// 	// Hide on swipe?
+				// 		if (config.hideOnSwipe) {
 
-							var result = false,
-								boundary = 20,
-								delta = 50;
+				// 			var result = false,
+				// 				boundary = 20,
+				// 				delta = 50;
 
-							switch (config.side) {
+				// 			switch (config.side) {
 
-								case 'left':
-									result = (diffY < boundary && diffY > (-1 * boundary)) && (diffX > delta);
-									break;
+				// 				case 'left':
+				// 					result = (diffY < boundary && diffY > (-1 * boundary)) && (diffX > delta);
+				// 					break;
 
-								case 'right':
-									result = (diffY < boundary && diffY > (-1 * boundary)) && (diffX < (-1 * delta));
-									break;
+				// 				case 'right':
+				// 					result = (diffY < boundary && diffY > (-1 * boundary)) && (diffX < (-1 * delta));
+				// 					break;
 
-								case 'top':
-									result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY > delta);
-									break;
+				// 				case 'top':
+				// 					result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY > delta);
+				// 					break;
 
-								case 'bottom':
-									result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY < (-1 * delta));
-									break;
+				// 				case 'bottom':
+				// 					result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY < (-1 * delta));
+				// 					break;
 
-								default:
-									break;
+				// 				default:
+				// 					break;
 
-							}
+				// 			}
 
-							if (result) {
+				// 			if (result) {
 
-								$this.touchPosX = null;
-								$this.touchPosY = null;
-								$this._hide();
+				// 				$this.touchPosX = null;
+				// 				$this.touchPosY = null;
+				// 				$this._hide();
 
-								return false;
+				// 				return false;
 
-							}
+				// 			}
 
-						}
+				// 		}
 
-					// Prevent vertical scrolling past the top or bottom.
-						if (($this.scrollTop() < 0 && diffY < 0)
-						|| (ts > (th - 2) && ts < (th + 2) && diffY > 0)) {
+				// 	// Prevent vertical scrolling past the top or bottom.
+				// 		if (($this.scrollTop() < 0 && diffY < 0)
+				// 		|| (ts > (th - 2) && ts < (th + 2) && diffY > 0)) {
 
-							event.preventDefault();
-							event.stopPropagation();
+				// 			event.preventDefault();
+				// 			event.stopPropagation();
 
-						}
+				// 		}
 
-				});
+				// });
 
 			// Event: Prevent certain events inside the panel from bubbling.
 				$this.on('click touchend touchstart touchmove', function(event) {
@@ -283,14 +283,14 @@
 
 		// Window.
 
-			// Event: Hide on ESC.
-				if (config.hideOnEscape)
-					$window.on('keydown', function(event) {
+			// // Event: Hide on ESC.
+			// 	if (config.hideOnEscape)
+			// 		$window.on('keydown', function(event) {
 
-						if (event.keyCode == 27)
-							$this._hide(event);
+			// 			if (event.keyCode == 27)
+			// 				$this._hide(event);
 
-					});
+			// 		});
 
 		return $this;
 
@@ -364,224 +364,224 @@
 				});
 
 		// Password.
-			$this.find('input[type=password]')
-				.each(function() {
+			// $this.find('input[type=password]')
+			// 	.each(function() {
 
-					var i = $(this);
-					var x = $(
-								$('<div>')
-									.append(i.clone())
-									.remove()
-									.html()
-									.replace(/type="password"/i, 'type="text"')
-									.replace(/type=password/i, 'type=text')
-					);
+			// 		var i = $(this);
+			// 		var x = $(
+			// 					$('<div>')
+			// 						.append(i.clone())
+			// 						.remove()
+			// 						.html()
+			// 						.replace(/type="password"/i, 'type="text"')
+			// 						.replace(/type=password/i, 'type=text')
+			// 		);
 
-					if (i.attr('id') != '')
-						x.attr('id', i.attr('id') + '-polyfill-field');
+			// 		if (i.attr('id') != '')
+			// 			x.attr('id', i.attr('id') + '-polyfill-field');
 
-					if (i.attr('name') != '')
-						x.attr('name', i.attr('name') + '-polyfill-field');
+			// 		if (i.attr('name') != '')
+			// 			x.attr('name', i.attr('name') + '-polyfill-field');
 
-					x.addClass('polyfill-placeholder')
-						.val(x.attr('placeholder')).insertAfter(i);
+			// 		x.addClass('polyfill-placeholder')
+			// 			.val(x.attr('placeholder')).insertAfter(i);
 
-					if (i.val() == '')
-						i.hide();
-					else
-						x.hide();
+			// 		if (i.val() == '')
+			// 			i.hide();
+			// 		else
+			// 			x.hide();
 
-					i
-						.on('blur', function(event) {
+			// 		i
+			// 			.on('blur', function(event) {
 
-							event.preventDefault();
+			// 				event.preventDefault();
 
-							var x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
+			// 				var x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
 
-							if (i.val() == '') {
+			// 				if (i.val() == '') {
 
-								i.hide();
-								x.show();
+			// 					i.hide();
+			// 					x.show();
 
-							}
+			// 				}
 
-						});
+			// 			});
 
-					x
-						.on('focus', function(event) {
+			// 		x
+			// 			.on('focus', function(event) {
 
-							event.preventDefault();
+			// 				event.preventDefault();
 
-							var i = x.parent().find('input[name=' + x.attr('name').replace('-polyfill-field', '') + ']');
+			// 				var i = x.parent().find('input[name=' + x.attr('name').replace('-polyfill-field', '') + ']');
 
-							x.hide();
+			// 				x.hide();
 
-							i
-								.show()
-								.focus();
+			// 				i
+			// 					.show()
+			// 					.focus();
 
-						})
-						.on('keypress', function(event) {
+			// 			})
+			// 			.on('keypress', function(event) {
 
-							event.preventDefault();
-							x.val('');
+			// 				event.preventDefault();
+			// 				x.val('');
 
-						});
+			// 			});
 
-				});
+			// 	});
 
-		// Events.
-			$this
-				.on('submit', function() {
+		// // Events.
+		// 	$this
+		// 		.on('submit', function() {
 
-					$this.find('input[type=text],input[type=password],textarea')
-						.each(function(event) {
+		// 			$this.find('input[type=text],input[type=password],textarea')
+		// 				.each(function(event) {
 
-							var i = $(this);
+		// 					var i = $(this);
 
-							if (i.attr('name').match(/-polyfill-field$/))
-								i.attr('name', '');
+		// 					if (i.attr('name').match(/-polyfill-field$/))
+		// 						i.attr('name', '');
 
-							if (i.val() == i.attr('placeholder')) {
+		// 					if (i.val() == i.attr('placeholder')) {
 
-								i.removeClass('polyfill-placeholder');
-								i.val('');
+		// 						i.removeClass('polyfill-placeholder');
+		// 						i.val('');
 
-							}
+		// 					}
 
-						});
+		// 				});
 
-				})
-				.on('reset', function(event) {
+		// 		})
+		// 		.on('reset', function(event) {
 
-					event.preventDefault();
+		// 			event.preventDefault();
 
-					$this.find('select')
-						.val($('option:first').val());
+		// 			$this.find('select')
+		// 				.val($('option:first').val());
 
-					$this.find('input,textarea')
-						.each(function() {
+		// 			$this.find('input,textarea')
+		// 				.each(function() {
 
-							var i = $(this),
-								x;
+		// 					var i = $(this),
+		// 						x;
 
-							i.removeClass('polyfill-placeholder');
+		// 					i.removeClass('polyfill-placeholder');
 
-							switch (this.type) {
+		// 					switch (this.type) {
 
-								case 'submit':
-								case 'reset':
-									break;
+		// 						case 'submit':
+		// 						case 'reset':
+		// 							break;
 
-								case 'password':
-									i.val(i.attr('defaultValue'));
+		// 						case 'password':
+		// 							i.val(i.attr('defaultValue'));
 
-									x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
+		// 							x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
 
-									if (i.val() == '') {
-										i.hide();
-										x.show();
-									}
-									else {
-										i.show();
-										x.hide();
-									}
+		// 							if (i.val() == '') {
+		// 								i.hide();
+		// 								x.show();
+		// 							}
+		// 							else {
+		// 								i.show();
+		// 								x.hide();
+		// 							}
 
-									break;
+		// 							break;
 
-								case 'checkbox':
-								case 'radio':
-									i.attr('checked', i.attr('defaultValue'));
-									break;
+		// 						case 'checkbox':
+		// 						case 'radio':
+		// 							i.attr('checked', i.attr('defaultValue'));
+		// 							break;
 
-								case 'text':
-								case 'textarea':
-									i.val(i.attr('defaultValue'));
+		// 						case 'text':
+		// 						case 'textarea':
+		// 							i.val(i.attr('defaultValue'));
 
-									if (i.val() == '') {
-										i.addClass('polyfill-placeholder');
-										i.val(i.attr('placeholder'));
-									}
+		// 							if (i.val() == '') {
+		// 								i.addClass('polyfill-placeholder');
+		// 								i.val(i.attr('placeholder'));
+		// 							}
 
-									break;
+		// 							break;
 
-								default:
-									i.val(i.attr('defaultValue'));
-									break;
+		// 						default:
+		// 							i.val(i.attr('defaultValue'));
+		// 							break;
 
-							}
-						});
+		// 					}
+		// 				});
 
-				});
+		// 		});
 
-		return $this;
+		// return $this;
 
 	};
 
-	/**
-	 * Moves elements to/from the first positions of their respective parents.
-	 * @param {jQuery} $elements Elements (or selector) to move.
-	 * @param {bool} condition If true, moves elements to the top. Otherwise, moves elements back to their original locations.
-	 */
-	$.prioritize = function($elements, condition) {
+	// /**
+	//  * Moves elements to/from the first positions of their respective parents.
+	//  * @param {jQuery} $elements Elements (or selector) to move.
+	//  * @param {bool} condition If true, moves elements to the top. Otherwise, moves elements back to their original locations.
+	//  */
+	// $.prioritize = function($elements, condition) {
 
-		var key = '__prioritize';
+	// 	var key = '__prioritize';
 
-		// Expand $elements if it's not already a jQuery object.
-			if (typeof $elements != 'jQuery')
-				$elements = $($elements);
+	// 	// Expand $elements if it's not already a jQuery object.
+	// 		if (typeof $elements != 'jQuery')
+	// 			$elements = $($elements);
 
-		// Step through elements.
-			$elements.each(function() {
+	// 	// Step through elements.
+	// 		$elements.each(function() {
 
-				var	$e = $(this), $p,
-					$parent = $e.parent();
+	// 			var	$e = $(this), $p,
+	// 				$parent = $e.parent();
 
-				// No parent? Bail.
-					if ($parent.length == 0)
-						return;
+	// 			// No parent? Bail.
+	// 				if ($parent.length == 0)
+	// 					return;
 
-				// Not moved? Move it.
-					if (!$e.data(key)) {
+	// 			// Not moved? Move it.
+	// 				if (!$e.data(key)) {
 
-						// Condition is false? Bail.
-							if (!condition)
-								return;
+	// 					// Condition is false? Bail.
+	// 						if (!condition)
+	// 							return;
 
-						// Get placeholder (which will serve as our point of reference for when this element needs to move back).
-							$p = $e.prev();
+	// 					// Get placeholder (which will serve as our point of reference for when this element needs to move back).
+	// 						$p = $e.prev();
 
-							// Couldn't find anything? Means this element's already at the top, so bail.
-								if ($p.length == 0)
-									return;
+	// 						// Couldn't find anything? Means this element's already at the top, so bail.
+	// 							if ($p.length == 0)
+	// 								return;
 
-						// Move element to top of parent.
-							$e.prependTo($parent);
+	// 					// Move element to top of parent.
+	// 						$e.prependTo($parent);
 
-						// Mark element as moved.
-							$e.data(key, $p);
+	// 					// Mark element as moved.
+	// 						$e.data(key, $p);
 
-					}
+	// 				}
 
-				// Moved already?
-					else {
+	// 			// Moved already?
+	// 				else {
 
-						// Condition is true? Bail.
-							if (condition)
-								return;
+	// 					// Condition is true? Bail.
+	// 						if (condition)
+	// 							return;
 
-						$p = $e.data(key);
+	// 					$p = $e.data(key);
 
-						// Move element back to its original location (using our placeholder).
-							$e.insertAfter($p);
+	// 					// Move element back to its original location (using our placeholder).
+	// 						$e.insertAfter($p);
 
-						// Unmark element as moved.
-							$e.removeData(key);
+	// 					// Unmark element as moved.
+	// 						$e.removeData(key);
 
-					}
+	// 				}
 
-			});
+	// 		});
 
-	};
+	// };
 
 })(jQuery);

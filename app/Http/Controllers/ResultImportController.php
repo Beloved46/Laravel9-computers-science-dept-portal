@@ -15,7 +15,12 @@ class ResultImportController extends Controller
     public function import_file(Request $request) {
 
        $file = $request->file('result_file')->store('imports');
-       (new ResultImport)->import($file);
+       $import = new ResultImport;
+       $import -> import($file);
+
+       if($import->failures()->isNotEmpty()) {
+           return back()->withFailures($import->failures());
+       }
     
        return back()->withStatus('file uploaded successfully');
     }

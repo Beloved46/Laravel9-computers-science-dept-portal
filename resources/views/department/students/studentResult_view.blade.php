@@ -25,7 +25,7 @@
 
                         <div class="sidelink">
 
-                            <h3> Student Dashboard</h3>
+                            <h3> <a href="/dashboard">Student Dashboard</a></h3>
                             <hr>
                             <h5><a href="/student/profile"><i class="fa fa-fw fa-user"></i> Profile</a></h5>
                             <hr>
@@ -82,7 +82,15 @@
 
 
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <a href="/student/result/download" class="button primary small">Download</a>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
+                            
                             
                         </div>
                     </div>

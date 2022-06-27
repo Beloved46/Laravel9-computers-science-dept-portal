@@ -3,6 +3,7 @@
     <x-auth-card>
     <div id="page-wrapper">
         <section class="is-preload min-h-screen flex flex-col sm:justify-center items-center">
+            <img class=" image w-20 h-20 " src="images/overtime.png" alt="logo">
             <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -46,7 +47,7 @@
             <div class="col-6 col-12-xsmall formin">
                 <select name="role_id" class="block mt-1 w-full border-gray-300
                 focus:border-indigo-300 focus:ring-indigo-200
-                focus:ring-opacity-50 rounded-md shadow-sm">
+                focus:ring-opacity-50 rounded-md shadow-sm" required>
                 <option value="" disabled selected>Select category</option>
                 <option value="student">Student</option>
                 <option value="staff">Staff</option>
