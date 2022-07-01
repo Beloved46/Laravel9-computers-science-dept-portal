@@ -4175,3 +4175,28 @@ input, select, textarea {
 .result_import {
 	height: 200px;
 }
+
+.panel {
+	margin-top: 20px;
+	margin-left: 60px;
+	border: 2px solid #B09B71;
+	border-radius: 5px;
+}
+.pull-right {
+	margin-left: 40px;
+}
+.panel-heading {
+	min-width: 250px;
+}
+.student-heading {
+	background-color: #810955;
+}
+.staff-heading {
+	background-color: #1A4D2E;
+}
+.panel-footer-student {
+	background-color: #FFF9D7;
+}
+.panel-footer-staff {
+	background-color: #C4DFAA;
+}

@@ -16,11 +16,11 @@ use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
 class ResultImport implements
- ToCollection,
- WithCustomCsvSettings,
-  SkipsOnError, 
-  WithValidation,
-   SkipsOnFailure
+    ToCollection,
+    WithCustomCsvSettings,
+    SkipsOnError, 
+    WithValidation,
+    SkipsOnFailure
 {
     use Importable, SkipsFailures;
     /**

@@ -24,7 +24,7 @@
 
                         <div class="sidelink">
 
-                            <h3><a href="/dashborad">Administrator</a></h3>
+                            <h3><a href="/dashboard">Administrator</a></h3>
                             <hr>
 
                             <h5><a href="{{ route('allstudents.index') }}"><i class="fa fa-fw fa-user"></i>
@@ -64,6 +64,56 @@
                                     <small class="userinfo">{{ Auth::user()->name }} {{ Auth::user()->surname }}</small>
                                   
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-6-medium">
+                                    <div class="panel">
+                                        <div class="panel-heading student-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    {{-- <i class="fa fa-file-text fa-5x"></i> --}}
+                                                    <i class="fa fa-user fa-5x"></i>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <div><h2>{{ Auth::user()->whereRoleIs('student')->count() }}</h2></div>
+                                                    <div class="text-right"><h3>Students</h3></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="{{ route('allstudents.index') }}">
+                                            <div class="panel-footer-student">
+                                                <span class="pull-left">View Students</span>
+                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-6-medium">
+                                    <div class="panel">
+                                        <div class="panel-heading staff-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    {{-- <i class="fa fa-file-text fa-5x"></i> --}}
+                                                    <i class="fa fa-user fa-5x"></i>
+                                                </div>
+                                                <div class="col-xs-9 ">
+                                                    <div><h2>{{ Auth::user()->whereRoleIs('staff')->count() }}</h2></div>
+                                                    <div class="text-right"><h3>Total staff</h3></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="{{ route('allstaff.index') }}">
+                                            <div class="panel-footer-staff">
+                                                <span class="pull-left">View Staffs</span>
+                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </section>
 
