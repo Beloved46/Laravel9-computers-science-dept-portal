@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Password;
 
 class StudentController extends Controller
 {
@@ -46,8 +46,22 @@ class StudentController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'matric' => ['nullable', 'integer', 'starts_with:22', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        $password_entry = new Request;
+        if ($password_entry->has('password') && !empty($request->password)) {
+            $password = trim($request->password);
+        } else {
+            //generate random password
+            $length = 10;
+            $keyspace = '12345678abcdefijklmnopqrstABCDEFGHIJKLMNOP';
+            $str = "";
+            $max = mb_strlen($keyspace, '8bit') -1;
+            for ($i = 0; $i < $length; $i++) {
+                $str .= $keyspace[random_int(0, $max)];
+            };
+            $password = $str;
+        }
         $student = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -55,13 +69,13 @@ class StudentController extends Controller
             'matric' => $request->matric,
             'password' => Hash::make($request->password), 
         ]);
+        
         $student->attachRole('student');
-        if($student->save()) {
-            $request->session()->flash('status', 'student added successfully');
+
+        Password::sendResetLink($request->only(['email']));
+        
+        if ($student->save()) {
             return redirect()->route('allstudents.index');
-        } else {
-            $request->session()->flash('danger', 'sorry an error occured while creating user');
-            return redirect()->route('allstudents.create');
         };
         
     }
@@ -115,10 +129,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $student)
+    public function destroy($id)
     {
-        
-        // $student->delete();
-        // return redirect()->route('allstudents.index');
+        $student = User::find($id);
+        $student->delete();
+        return redirect()->route('allstudents.index');
     }
 }

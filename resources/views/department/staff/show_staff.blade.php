@@ -1,111 +1,154 @@
-<x-guest-layout>
 
-    <div id="page-wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <h1 id="logo"><a href="/">Computer Science</a></h1>
-            <nav id="nav">
-                <ul>
-
-                    <li><a href="{{ route('head') }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}
-                            {{ Auth::user()->surname }}</a></li>
-
+@extends('layouts.admin')
+@section('contents')
+<div class="d-flex" id="wrapper">
+{{-- sidebar --}}
+    <div class="bg-white" id="sidebar-wrapper">
+       
+            <a href="/" class="list-group-item link-success fw-bold sidebar-heading text-center py-4 primary-text fs-4 fw-bold border-bottom">
+                Computerscience
+            </a>
+        <div class="list-group list-group flush my-3">
+            <a href="{{ url('/dashboard') }}" class="list-group-item-action bg-transparent second-text active">
+                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fas fa-project-diagram me-2"></i> Admins
+            </a>
+            <a href="{{ route('allstaff.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fa-regular fa-user me-2"></i> Staffs
+            </a>
+            <a href="{{ route('allstudents.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fa-solid fa-address-book me-2"></i>Students
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fa-solid fa-universal-access me-2"></i> Permissions
+            </a>
+                
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
+                        <span class="list-group-item list-group-item-action bg-transparent text-danger fw-bold link-danger">
+                        <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Logout
+                        </span>
+                    </a>
+                </form>
+            
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Dashboard</h2>
+                </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user me-2"></i>{{  Auth::user()->name  }} {{ Auth::user()->surname }}
+                    </a>
+                    </li>
                 </ul>
-            </nav>
-        </header>
-
-        <!-- Main -->
-        <div id="main" class=" style1">
-            <div>
-
-                <div class="row ">
-                    <div class="col-3 col-12-medium">
-
-                        <div class="sidelink">
-
-                            <h3><a href="/dashborad">Administrator</a></h3> <hr>
-
-                            <h5><a href="{{ route('allstudents.index') }}"><i class="fa fa-fw fa-user"></i>
-                                    Students</a></h5> <hr>
-
-                            <h5><a href="{{ route('allstaff.index') }}"><i class="fa fa-fw fa-table"></i> Staffs</a> <hr>
-                            </h5>
-
-                            <h5><a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a></h5> <hr>
-
-                            <h5><a href="home">
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
-                                            <span class="logOu"> <i class="fa fa-fw fa-power-off"></i>
-                                                {{ __('Log out') }}</span>
-                                        </x-responsive-nav-link>
-                                    </form>
-                                </a></h5>
-
+              </div>
+        </nav>
+        <div class="container-fluid px-4">
+            <div class="row g-5 my-2">
+                <div class="col-md-4">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                        <div>
+                            <h3 class="fs-2">{{ Auth::user()->whereRoleIs('student')->count() }}</h3>
+                            <p class="fs-5">Students</p>
                         </div>
-
-
+                        <i class="fas fa-address-book  fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
-                    <div class="col-9 col-12-medium imp-medium">
+                </div>
 
-                        <!-- Content -->
-                        <section id="content">
+                <div class="col-md-4">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                        <div>
+                            <h3 class="fs-2">{{ Auth::user()->whereRoleIs('staff')->count() }}</h3>
+                            <p class="fs-5">Staffs</p>
+                        </div>
+                        <i
+                            class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                    </div>
+                </div>
 
-                            
-                                <!-- Page Heading -->
-                                <div class="row page-header">
-                                    <div class="col-8 col-12-medium imp-medium ">
-
-                                        <h1> Welcome to Your Dashboard</h1> 
-                                        <small class="userinfo">{{ Auth::user()->name }} {{ Auth::user()->surname }}</small>
-                                      
+                <div class="col-md-4">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                        <div>
+                            <h3 class="fs-2">{{ Auth::user()->whereRoleIs('administrator')->count() }}</h3>
+                            <p class="fs-5">Admins</p>
+                        </div>
+                        <i class="fas fa-project-diagram fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                    </div>
+                </div>
+            </div>
+            {{-- Create student form --}}
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('allstaff.update', $staff->id) }}">
+                                @csrf
+                                @method('PUT')
+        
+                                <div class="row mb-3">
+                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+        
+                                    <div class="col-md-6">
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $staff->name }}" required autocomplete="name" autofocus>
+    
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
-                        </section>
-                        <div id="page-wrapper">
-                            <section class="is-preload  flex flex-col sm:justify-center items-center">
-                                <!-- Validation Errors -->
-                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                                <form method="POST" action="allstaff/{{  $staff->id }}/edit">
-                                    @csrf
-
-                                    <!-- Name -->
-                                    <div class="col-12 col-12-xsmall formin">
-                                        <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                            :value="{{ $staff->name }}" placeholder="Name" required autofocus />
+                                <div class="row mb-3">
+                                    <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
+        
+                                    <div class="col-md-6">
+                                        <input id="surname" type="text" class="form-control @error('name') is-invalid @enderror" name="surname" value="{{ $staff->surname }}" required autocomplete="surname" autofocus>
+        
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-
-                                    <!-- Surname -->
-                                    <div class="col-6 col-12-xsmall formin">
-                                        <x-input id="surname" class="block mt-1 w-full" type="text" name="surname"
-                                            :value="{{ $staff->surname }}"  required autofocus />
+                                </div>
+        
+                                <div class="row mb-3">
+                                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+        
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $staff->email }}" required autocomplete="email">
+        
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-
-
-                                    <!-- Email Address -->
-                                    <div class="col-6 col-12-xsmall formin">
-                                        <x-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                            :value="{{ $staff->email }}"  required />
-                                    </div>
-
-{{-- 
-                                    <x-button class="ml-4">
-                                        {{ __('Edit') }}
-                                    </x-button> --}}
+                                </div>
+                               
+                            </form>
                         </div>
-                        </form>
-
-                        </section>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
-</x-guest-layout>
+</div>
+@endsection

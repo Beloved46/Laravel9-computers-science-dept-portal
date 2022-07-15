@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Password;
 
 class StaffController extends Controller
 {
@@ -44,8 +44,22 @@ class StaffController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        $password_entry = new Request;
+        if ($password_entry->has('password') && !empty($request->password)) {
+            $password = trim($request->password);
+        } else {
+            //generate random password
+            $length = 10;
+            $keyspace = '12345678abcdefijklmnopqrstABCDEFGHIJKLMNOP';
+            $str = "";
+            $max = mb_strlen($keyspace, '8bit') -1;
+            for ($i = 0; $i < $length; $i++) {
+                $str .= $keyspace[random_int(0, $max)];
+            };
+            $password = $str;
+        }
         $staff = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -53,12 +67,11 @@ class StaffController extends Controller
             'password' => Hash::make($request->password), 
         ]);
         $staff->attachRole('staff');
+
+        Password::sendResetLink($request->only(['email']));
+
         if($staff->save()) {
-            $request->session()->flash('status', 'staff added successfully');
             return redirect()->route('allstaff.index');
-        } else {
-            $request->session()->flash('danger', 'sorry an error occured while creating user');
-            return redirect()->route('allstaff.create');
         };
         
     }
@@ -113,6 +126,8 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $staff = User::find($id);
+        $staff->delete();
+        return redirect()->route('allstaff.index');
     }
 }

@@ -12,14 +12,17 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
+        'superadministrator' => [
+            'users' => 'c,r,u,d',
+            'acl' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
         'administrator' => [
-            'staff' => 'c,r,u,d',
-            'student' => 'c,r,u,d',
+            'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'staff' => [
-            'student' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'profile' => 'r,u',
         ],
         'student' => [
             'profile' => 'r,u',

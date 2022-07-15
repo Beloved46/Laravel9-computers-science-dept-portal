@@ -16,7 +16,7 @@
         
 
         <!-- Scripts -->
-        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+        
         <noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
 
         
@@ -39,9 +39,9 @@
                 @else
                     <li><a href="{{ route('login') }}" class="button primary small">Log in</a></li>
     
-                    @if (Route::has('register'))
+                    {{-- @if (Route::has('register'))
                         <li><a href="{{ route('register') }}" class="button small">Register</a></li>
-                    @endif
+                    @endif --}}
                 @endauth
                 </li>
                 </div>
@@ -71,12 +71,4 @@
 				</footer>
     
     </body>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
-		<script src="{{ asset('assets/js/jquery.dropotron.min.js') }}"></script>
-		{{-- <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script> --}}
-		<script src="{{ asset('assets/js/browser.min.js') }}"></script>
-		<script src="{{ asset('assets/js/breakpoints.min.js') }}"></script>
-		<script src="{{ asset('assets/js/util.js') }}"></script>
-		<script src="{{ asset('assets/js/main.js') }}"></script>
 </html>

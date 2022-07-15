@@ -25,8 +25,9 @@ Route::get('/', function () {
 
 // Administrator Dashboard 
 
-Route::prefix('/')->middleware('role:administrator')->group(function() {
-    Route::get('/admin', [Administrator::class, 'dashboard'])->name('head');
+Route::prefix('/manage')->middleware('role:superadministrator|administrator')->group(function() {
+    Route::get('/', [Administrator::class, 'index']);
+    Route::get('/dashboard', [Administrator::class, 'dashboard'])->name('head');
     Route::resource('/allstudents', StudentController::class);
     Route::resource('/allstaff', StaffController::class);
 });
@@ -42,6 +43,7 @@ Route::group(['middleware'=> ['role:staff']], function() {
 // student Dashboard
 Route::group(['middleware'=>['role:student']], function() {
     Route::get('/student/profile', [StudentDash::class, 'show']);
+    Route::post('/student/profile/update', [StudentDash::class, 'profileUpdate']);
     Route::get('/student/results', [StudentDash::class, 'ShowResult']);
     Route::get('/student/result/download', [ResultExportController::class, 'export_file']);
 });
@@ -56,3 +58,11 @@ Route::group(['middleware'=> ['auth']], function() {
 require __DIR__.'/auth.php';
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

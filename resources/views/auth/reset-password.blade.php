@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <img class=" image w-20 h-20 " src="images/overtime.png" alt="logo">
 
@@ -41,4 +41,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
