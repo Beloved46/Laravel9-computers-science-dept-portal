@@ -96,11 +96,11 @@
                 <h3 class="fs-4 mb-3">All staff</h3>
                 <h3 ><a href="{{ route('allstaff.create') }}" class="btn btn-success">Add Staff</a></h3>
 
-                <div class="col">
-                    <table class="table bg-white rounded shadow-sm  table-hover table-striped">
+                <div class="col-md-8 ">
+                    <table class="table bg-white rounded shadow-sm  table-hover table-striped table-responsive" >
                         <thead>
                             <tr>
-                                <th scope="col">Staff id.</th>
+                                {{-- <th scope="col">Staff id.</th> --}}
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Email</th>
@@ -111,7 +111,7 @@
                         <tbody>
                             @foreach ($staffs as $staff)
                             <tr>
-                                <td>{{ $staff->id }}</td>
+                                {{-- <td>{{ $staff->id }}</td> --}}
                                 <td>{{ $staff->name }}</td>
                                 <td>{{ $staff->surname }}</td>
                                 <td>{{ $staff->email }}</td>

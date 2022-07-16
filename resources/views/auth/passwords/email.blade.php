@@ -5,7 +5,7 @@
     <div class="row justify-content-center authourization">
         <div class="col-lg-6 col-md-8">
             <div class="card">
-                <img class=" rounded mx-auto d-block w-25 h-25 " src="{{ asset('assets/css/images/overlay.png') }}" alt="logo">
+                <img class=" rounded mx-auto d-block w-25 h-25 " src="{{ asset('images/overtime.png') }}" alt="logo">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -43,5 +43,4 @@
         </div>
     </div>
 </div>
-@include('layouts.footer')
 @endsection

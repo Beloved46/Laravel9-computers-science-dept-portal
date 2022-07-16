@@ -11,7 +11,7 @@
     
 }
 .home-image {
-    margin-right: 100px;
+    margin-right: 50px;
 }
 @media (max-width: 600px) {
     .home-image{
@@ -29,6 +29,7 @@
 .list {
     margin:2em auto;
 }
+
 .icon-label {
     color: #1A4D2E;
 }

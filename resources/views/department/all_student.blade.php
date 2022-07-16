@@ -59,7 +59,7 @@
                 </ul>
               </div>
         </nav>
-        <div class="container-fluid px-4">
+        <div class="container-fluid px-4" >
             <div class="row g-5 my-2">
                 <div class="col-md-4">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
@@ -96,13 +96,13 @@
                 <h3 class="fs-4 mb-3">All students</h3>
                 <h3 ><a href="{{ route('allstudents.create') }}" class="btn btn-success">Add Student</a></h3>
 
-                <div class="col">
-                    <table class="table bg-white rounded shadow-sm  table-hover table-striped">
+                <div class="col-md-8 ">
+                    <table class="table bg-white rounded shadow-sm  table-hover table-striped table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">Matric No.</th>
+                                <th scope="col">Matric</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Surname</th>
+                                {{-- <th scope="col">Surname</th> --}}
                                 <th scope="col">Email</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
@@ -113,7 +113,7 @@
                             <tr>
                                 <td>{{ $student->matric }}</td>
                                 <td>{{ $student->name }}</td>
-                                <td>{{ $student->surname }}</td>
+                                {{-- <td>{{ $student->surname }}</td> --}}
                                 <td>{{ $student->email }}</td>
                                 <td><a href="allstudents/{{ $student->id }}/edit"><button class="btn btn-outline-success btn-sm">Edit</button></a></td>
                                 <td> 
