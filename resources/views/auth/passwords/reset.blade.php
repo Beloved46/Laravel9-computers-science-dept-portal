@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center authorization">
+    <div class="row justify-content-center authourization">
         <div class="col-lg-6 col-md-8">
             <div class="card">
                 <img class=" rounded mx-auto d-block w-25 h-25 " src="{{ asset('images/overtime.png') }}" alt="logo">

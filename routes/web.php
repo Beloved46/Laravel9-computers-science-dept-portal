@@ -3,6 +3,7 @@
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administrator;
+use App\Http\Controllers\Admins;
 use App\Http\Controllers\ResultExportController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ResultImportController;
@@ -23,11 +24,20 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Administrator Dashboard 
+// SuperAdministrator Dashboard 
 
-Route::prefix('/manage')->middleware('role:superadministrator|administrator')->group(function() {
+Route::prefix('/manage')->middleware('role:superadministrator')->group(function() {
     Route::get('/', [Administrator::class, 'index']);
     Route::get('/dashboard', [Administrator::class, 'dashboard'])->name('head');
+    Route::resource('/admins', Admins::class);
+    Route::resource('/allstudents', StudentController::class);
+    Route::resource('/allstaff', StaffController::class);
+});
+
+//Administrator Dashboard
+
+Route::prefix('/manage')->middleware('role:superadministrator|administrator')->group(function() {
+    Route::get('/admin', [Administrator::class, 'showAdmin']);
     Route::resource('/allstudents', StudentController::class);
     Route::resource('/allstaff', StaffController::class);
 });

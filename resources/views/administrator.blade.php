@@ -11,9 +11,9 @@
             <a href="/dashboard" class="list-group-item-action bg-transparent second-text active">
                 <i class="fas fa-tachometer-alt me-2"></i>Dashboard
             </a>
-            <a href="{{ route('admins.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+            {{-- <a href="{{ route('admins.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-project-diagram me-2"></i> Admins
-            </a>
+            </a> --}}
             <a href="{{ route('allstaff.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fa-regular fa-user me-2"></i> Staffs
             </a>

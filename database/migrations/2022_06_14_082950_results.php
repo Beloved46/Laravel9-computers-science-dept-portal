@@ -22,7 +22,8 @@ class Results extends Migration
             $table->string('grade');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
-            $table->foreign('matric_no')->references('matric')->on('users');
+            $table->foreign('matric_no')->references('matric')
+            ->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

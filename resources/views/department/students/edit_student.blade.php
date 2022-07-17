@@ -12,7 +12,7 @@
             <a href="{{ url('/dashboard') }}" class="list-group-item-action bg-transparent second-text active">
                 <i class="fas fa-tachometer-alt me-2"></i>Dashboard
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+            <a href="{{ route('admins.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-project-diagram me-2"></i> Admins
             </a>
             <a href="{{ route('allstaff.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -94,7 +94,7 @@
             </div>
             {{-- Create student form --}}
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-8 mt-5">
                     <div class="card">
                         <div class="card-body">
                             <form method="POST" action="{{ route('allstudents.update', $student->id) }}">

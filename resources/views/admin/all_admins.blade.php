@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 @section('contents')
 <div class="d-flex" id="wrapper">
@@ -8,7 +9,7 @@
                 Computerscience
             </a>
         <div class="list-group list-group flush my-3">
-            <a href="/dashboard" class="list-group-item-action bg-transparent second-text active">
+            <a href="{{ url('/dashboard') }}" class="list-group-item-action bg-transparent second-text active">
                 <i class="fas fa-tachometer-alt me-2"></i>Dashboard
             </a>
             <a href="{{ route('admins.index') }}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -91,7 +92,46 @@
                     </div>
                 </div>
             </div>
+            <div class="row my-5">
+                <h3 class="fs-4 mb-3">Admins</h3>
+                <h3 ><a href="{{ route('admins.create') }}" class="btn btn-success">Add Admin</a></h3>
+
+                <div class="col-md-8 ">
+                    <table class="table bg-white rounded shadow-sm  table-hover table-striped table-responsive" >
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($admins as $admin)
+                            <tr>
+                                <td>{{ $admin->name }}</td>
+                                <td>{{ $admin->surname }}</td>
+                                <td>{{ $admin->email }}</td>
+                                <td><a href="admins/{{ $admin->id }}/edit"><button class="btn btn-outline-success btn-sm">Edit</button></a></td>
+                                <td> 
+                                    <form action="admins/{{ $admin->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        
+                    </table>
+                    {{-- <h4> {{ $students->links() }}</h4> --}}
+                </div>
+               
+            </div>
         </div>
     </div>
 </div>
 @endsection
+

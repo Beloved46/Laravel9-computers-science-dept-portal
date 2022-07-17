@@ -58,7 +58,22 @@
                 </ul>
               </div>
         </nav>
-        
+        <div id="carouselExampleSlidesOnly" class="carousel slide mt-5 ms-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active ">
+                <img src="{{ asset('images/green-chameleon-s9CC2SKySJM-unsplash.jpg') }}" class="d-block w-75 h-75" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg') }}" class="d-block w-75 h-75" alt="...">
+              </div>
+              <div class="carousel-item ">
+                <img src="{{ asset('images/jeshoots-com--2vD8lIhdnw-unsplash.jpg') }}" class="d-block w-75 h-75" alt="...">
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 @endsection
+
+
+  
